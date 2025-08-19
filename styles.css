@@ -40,7 +40,7 @@ body {
   justify-content: space-around;
   align-items: center;
   border-radius: 0.5em;
-  display: none;
+  /* display: none; */
 }
 
 
@@ -59,7 +59,7 @@ body {
   background-color: white;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     scale: 1.2;
     rotate: -15deg;
     color: white;
@@ -76,11 +76,30 @@ body {
 
 
 /* game screen */
-h1{
+#game-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+h1 {
   font-size: 3rem;
 }
-#grid-container{
-  background-color: white;
-  min-height: 400px;
-  margin-block: 2em;
+
+#grid-container {
+  margin-block: 2.5em;
+  display: grid;
+}
+
+.square {
+  background-color: var(--unrevealed-tiles);
+  border: 1px solid darkgray;
+  padding: 1em;
+  cursor: pointer;
+  transition: 0.2s smooth;
+  &:hover{
+    opacity: 0.8;
+  }
 }
