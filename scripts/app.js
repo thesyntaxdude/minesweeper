@@ -16,3 +16,6 @@ Gameboard.startBtn.addEventListener("click", () => {
 Gameboard.gridContainer.addEventListener("click", (e) => {
   logic.checkForCloseBombs(e);
 });
+Logic.restartGameBtn.addEventListener("click", () => {
+  logic.restartGame();
+});

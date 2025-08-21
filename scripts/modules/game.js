@@ -1,6 +1,9 @@
 export class Logic {
   static gameoverScreen = document.querySelector("#gameover-screen");
   static gameScreen = document.querySelector("#game-screen");
+  static startScreen = document.querySelector("#start-screen");
+  static restartGameBtn = document.querySelector("#restart-game");
+
   getTotalSquares() {
     let totalGridSquares = 0;
     const squares = document.querySelectorAll(".square");
@@ -38,7 +41,7 @@ export class Logic {
       noBomb = false;
       e.target.style.backgroundColor = "red";
       e.target.style.color = "var(--numbers)";
-      setTimeout(()=>{
+      setTimeout(() => {
         Logic.gameScreen.style.display = "none";
         Logic.gameoverScreen.style.display = "flex";
       }, 100);
@@ -71,5 +74,9 @@ export class Logic {
         e.target.style.backgroundColor = "var(--revealed-tiles)";
       }
     }
+  }
+
+  restartGame() {
+    window.location.reload();
   }
 }
