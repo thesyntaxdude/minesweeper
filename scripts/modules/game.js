@@ -29,4 +29,38 @@ export class Logic {
       numberOfBombs.squares[randomNumber].textContent = "💣";
     }
   }
+
+  checkForBombClicks(e) {
+    if (e.target.textContent === "💣") {
+      e.target.style.backgroundColor = "red";
+      e.target.style.color = "var(--numbers)";  
+      return console.log("Game over! You hit a mine.");
+    }
+  }
+
+  checkForCloseBombs(e) {
+    this.checkForBombClicks(e);
+    let closeBombCount = 0;
+    try {
+      if (e.target.previousSibling.textContent === "💣") {
+        closeBombCount++;
+      }
+    } catch (error) {
+      closeBombCount = 0;
+    }
+    try {
+      if (e.target.nextSibling.textContent === "💣") {
+        closeBombCount++;
+      }
+    } catch (error) {
+      closeBombCount = 0;
+    }
+    if (closeBombCount) {
+      e.target.textContent = closeBombCount;
+      e.target.style.color = "var(--numbers)";
+      e.target.style.backgroundColor = "var(--revealed-tiles)";
+    } else {
+      e.target.style.backgroundColor = "var(--revealed-tiles)";
+    }
+  }
 }

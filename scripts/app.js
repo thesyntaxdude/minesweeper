@@ -13,3 +13,6 @@ Gameboard.startBtn.addEventListener("click", () => {
   app.generateBoard();
   logic.placeBombs();
 });
+Gameboard.gridContainer.addEventListener("click", (e) => {
+  logic.checkForCloseBombs(e);
+});
