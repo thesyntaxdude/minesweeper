@@ -1,3 +1,5 @@
+import { Logic } from "./game.js";
+
 export class Gameboard {
   static gridContainer = document.querySelector("#grid-container");
   static startBtn = document.querySelector("#start-btn");
@@ -40,7 +42,6 @@ export class Gameboard {
         Gameboard.gridContainer.appendChild(square);
       }
     }
-  }
 
-  
+  }
 }

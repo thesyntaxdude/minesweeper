@@ -28,7 +28,8 @@ body {
   background-color: var(--background-color);
 }
 
-#start-screen {
+#start-screen,
+#gameover-screen {
   background-color: #fff;
   width: 500px;
   min-height: 250px;
@@ -40,7 +41,6 @@ body {
   justify-content: space-around;
   align-items: center;
   border-radius: 0.5em;
-  /* display: none; */
 }
 
 
@@ -51,7 +51,7 @@ body {
   padding: 0.5em;
 }
 
-#start-btn {
+#start-btn, #restart-game {
   padding: 0.5em 1em;
   font-size: 1rem;
   font-weight: bold;
@@ -95,11 +95,25 @@ h1 {
 
 .square {
   background-color: var(--unrevealed-tiles);
+  color: transparent;
   border: 1px solid darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1em;
+  font-size: 0.8rem;
+  font-weight: bold;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
   transition: 0.2s smooth;
-  &:hover{
+
+  &:hover {
     opacity: 0.8;
   }
 }
+
+#gameover-screen {
+  display: none;
+}
+
