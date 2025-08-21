@@ -96,7 +96,13 @@ h1 {
 .square {
   background-color: var(--unrevealed-tiles);
   border: 1px solid darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1em;
+  font-size: 0.8rem;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
   transition: 0.2s smooth;
   &:hover{
