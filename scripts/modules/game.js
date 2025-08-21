@@ -1,4 +1,6 @@
 export class Logic {
+  static gameoverScreen = document.querySelector("#gameover-screen");
+  static gameScreen = document.querySelector("#game-screen");
   getTotalSquares() {
     let totalGridSquares = 0;
     const squares = document.querySelectorAll(".square");
@@ -31,36 +33,43 @@ export class Logic {
   }
 
   checkForBombClicks(e) {
+    let noBomb = true;
     if (e.target.textContent === "💣") {
+      noBomb = false;
       e.target.style.backgroundColor = "red";
-      e.target.style.color = "var(--numbers)";  
-      return console.log("Game over! You hit a mine.");
+      e.target.style.color = "var(--numbers)";
+      setTimeout(()=>{
+        Logic.gameScreen.style.display = "none";
+        Logic.gameoverScreen.style.display = "flex";
+      }, 100);
     }
+    return noBomb;
   }
 
   checkForCloseBombs(e) {
-    this.checkForBombClicks(e);
-    let closeBombCount = 0;
-    try {
-      if (e.target.previousSibling.textContent === "💣") {
-        closeBombCount++;
+    if (this.checkForBombClicks(e)) {
+      let closeBombCount = 0;
+      try {
+        if (e.target.previousSibling.textContent === "💣") {
+          closeBombCount++;
+        }
+      } catch (error) {
+        closeBombCount = 0;
       }
-    } catch (error) {
-      closeBombCount = 0;
-    }
-    try {
-      if (e.target.nextSibling.textContent === "💣") {
-        closeBombCount++;
+      try {
+        if (e.target.nextSibling.textContent === "💣") {
+          closeBombCount++;
+        }
+      } catch (error) {
+        closeBombCount = 0;
       }
-    } catch (error) {
-      closeBombCount = 0;
-    }
-    if (closeBombCount) {
-      e.target.textContent = closeBombCount;
-      e.target.style.color = "var(--numbers)";
-      e.target.style.backgroundColor = "var(--revealed-tiles)";
-    } else {
-      e.target.style.backgroundColor = "var(--revealed-tiles)";
+      if (closeBombCount) {
+        e.target.textContent = closeBombCount;
+        e.target.style.color = "var(--numbers)";
+        e.target.style.backgroundColor = "var(--revealed-tiles)";
+      } else {
+        e.target.style.backgroundColor = "var(--revealed-tiles)";
+      }
     }
   }
 }

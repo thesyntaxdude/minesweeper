@@ -28,7 +28,8 @@ body {
   background-color: var(--background-color);
 }
 
-#start-screen {
+#start-screen,
+#gameover-screen {
   background-color: #fff;
   width: 500px;
   min-height: 250px;
@@ -51,7 +52,7 @@ body {
   padding: 0.5em;
 }
 
-#start-btn {
+#start-btn, #restart-game {
   padding: 0.5em 1em;
   font-size: 1rem;
   font-weight: bold;
@@ -107,7 +108,13 @@ h1 {
   width: 20px;
   cursor: pointer;
   transition: 0.2s smooth;
-  &:hover{
+
+  &:hover {
     opacity: 0.8;
   }
 }
+
+#gameover-screen {
+  display: none;
+}
+
